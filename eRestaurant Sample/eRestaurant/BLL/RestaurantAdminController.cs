@@ -226,39 +226,9 @@ namespace eRestaurant.BLL
             }
         }
         #endregion
-        #region Query
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<SpecialEvent> ListAllSpecialEvents()
-        {
-            using (RestaurantContext context = new RestaurantContext())
-            {
-                return context.SpecialEvents.ToList();
-            }
-        }
-
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public SpecialEvent GetSpecialEvent(int SpecialEventId)
-        {
-            using (RestaurantContext context = new RestaurantContext())
-            {
-                return context.SpecialEvents.Find(SpecialEventId);
-            }
-        }
-        #endregion
+        
         #endregion
 
-        #region Ad-hoc
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Reservation> LookupReservationsBySpecialEvent(string eventCode)
-        {
-            using (RestaurantContext context = new RestaurantContext())
-            {
-                var data = from info in context.Reservations
-                           where info.EventCode == eventCode
-                           select info;
-                return data.ToList();
-            }
-        }
-        #endregion
+       
     }
 }
